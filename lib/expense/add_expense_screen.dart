@@ -239,7 +239,7 @@ class ExpenseWidget extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Text(
                   moneyFormat(
                     value: toDouble(
