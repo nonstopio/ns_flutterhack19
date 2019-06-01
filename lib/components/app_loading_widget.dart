@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 
 
 class FullScreenLoader extends StatelessWidget {

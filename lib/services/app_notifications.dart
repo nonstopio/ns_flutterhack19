@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutterhackathon/Services/auth.dart';
-import 'package:flutterhackathon/Utils/app_methods.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/app_methods.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 
 final notifications = new FirebaseMessaging();
 

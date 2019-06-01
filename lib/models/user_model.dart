@@ -1,5 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 import 'package:meta/meta.dart';
 
 class User {

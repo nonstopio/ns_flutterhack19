@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/theme/app_textstyle.dart';
 import 'package:flutterhackathon/theme/theme.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 
 class AppButton extends StatelessWidget {
   final String title;

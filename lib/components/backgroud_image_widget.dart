@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Theme/theme.dart';
-import 'package:flutterhackathon/Utils/app_size.dart';
+import 'package:flutterhackathon/theme/theme.dart';
+import 'package:flutterhackathon/utils/app_size.dart';
 
 class BackgroundImageWidget extends StatelessWidget {
   final String image;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Theme/theme.dart';
+import 'package:flutterhackathon/theme/theme.dart';
 
 class BackgroundGradientWidget extends StatelessWidget {
   final Widget child;

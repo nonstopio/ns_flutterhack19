@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:url_launcher/url_launcher.dart';

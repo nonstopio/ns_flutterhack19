@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterhackathon/Services/services.dart';
 import 'package:flutterhackathon/screens/splash_screen.dart';
 
-import 'Utils/app_strings.dart';
+import 'utils/app_strings.dart';
 
 void main() async {
   await setUserFromSharedPreference();

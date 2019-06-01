@@ -1,4 +1,4 @@
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 
 class FieldValidator {
   static String validateEmail(String value) {

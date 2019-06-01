@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_native_image/flutter_native_image.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';
 

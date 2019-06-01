@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterhackathon/Theme/theme.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/theme/theme.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 
 enum ButtonType { positiveButton, negativeButton }
 

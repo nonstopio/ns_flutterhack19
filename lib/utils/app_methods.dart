@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Theme/theme.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/theme/theme.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 import 'package:intl/intl.dart';
 
 appLogs(Object object, {String tag = 'APPLOGS'}) {

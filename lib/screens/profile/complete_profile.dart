@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutterhackathon/Services/auth.dart';
 import 'package:flutterhackathon/Services/firebase.dart';
-import 'package:flutterhackathon/Utils/utils.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_alerts.dart';
 import 'package:flutterhackathon/components/app_button.dart';
 import 'package:flutterhackathon/components/backgroud_image_widget.dart';
