@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Components/app_loading_widget.dart';
+import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/Utils/app_constants.dart';
 import 'package:flutterhackathon/Utils/app_methods.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';

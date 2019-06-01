@@ -3,25 +3,25 @@ import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/Utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
 
-class DemoScreen extends StatefulWidget {
+class ViewFeedsScreen extends StatefulWidget {
   @override
-  _DemoScreenState createState() => _DemoScreenState();
+  _ViewFeedsScreenState createState() => _ViewFeedsScreenState();
 }
 
-class _DemoScreenState extends State<DemoScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('DemoScreen');
+class _ViewFeedsScreenState extends State<ViewFeedsScreen> {
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('ViewFeedsScreen');
 
-  PageState _pageState = PageState.Loading;
+  PageState _pageState = PageState.Loaded;
   String message = "";
 
   @override
   void initState() {
     super.initState();
-    appLogs("DemoScreen", tag: "Screen");
-    Future.delayed(Duration(milliseconds: 500), () => getDemoScreenDetails());
+    appLogs("ViewFeedsScreen", tag: "Screen");
+    Future.delayed(Duration(milliseconds: 100), () => getViewFeedsScreenDetails());
   }
 
-  getDemoScreenDetails() async {
+  getViewFeedsScreenDetails() async {
     hideLoading();
   }
 
@@ -56,25 +56,25 @@ class _DemoScreenState extends State<DemoScreen> {
       offstage: _pageState != PageState.Error,
       child: AppErrorWidget(
         message: message,
-        callback: () => getDemoScreenDetails(),
+        callback: () => getViewFeedsScreenDetails(),
       ),
     );
   }
 
   showLoading() {
-    appLogs("DemoScreen:showLoading");
+    appLogs("ViewFeedsScreen:showLoading");
 
     setState(() => _pageState = PageState.Loading);
   }
 
   hideLoading() {
-    appLogs("DemoScreen:hideLoading");
+    appLogs("ViewFeedsScreen:hideLoading");
 
     setState(() => _pageState = PageState.Loaded);
   }
 
   showError() {
-    appLogs("DemoScreen:showError");
+    appLogs("ViewFeedsScreen:showError");
 
     setState(() => _pageState = PageState.Error);
   }
