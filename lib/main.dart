@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: App.appName,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      home: MyCirclesScreen(),
       theme: ThemeData(
         // primarySwatch: Colors.blue,
         fontFamily: 'Rubik',
