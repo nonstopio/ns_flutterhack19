@@ -26,7 +26,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String _phone = "";
   String _otp = "";
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('LoginScreen');
+  GlobalKey<ScaffoldState> _scaffoldKey =
+      new GlobalObjectKey<ScaffoldState>('LoginScreen');
+
+      // 7875056731
 
   final _numberFormKey = GlobalKey<FormState>();
   final _otpFormKey = GlobalKey<FormState>();
@@ -53,7 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   phoneVerificationCompleted(AuthCredential phoneAuthCredential) async {
-    _firebaseUser = await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
+    _firebaseUser =
+        await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
 
     if (Platform.isAndroid) {
       showSnackBar(
@@ -80,8 +84,16 @@ class _LoginScreenState extends State<LoginScreen> {
               top: Sizes.s25,
             ),
             child: Text(
-              "Register",
-              style: TextStyles.headingTitle,
+              "Welcome",
+              style: TextStyle(
+                fontSize: FontSize.s30,
+                // fontFamily: FontFamily.bold,
+                fontWeight: FontWeight.w300,
+                color: AppColors.lightBlack,
+                letterSpacing: 0.88,
+                textBaseline: TextBaseline.alphabetic,
+                inherit: false,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -92,7 +104,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: Text(
               "Let’s create your account. Please enter your mobile number",
-              style: TextStyles.headingTitle,
+              style: TextStyle(
+                fontSize: FontSize.s18,
+                // fontFamily: FontFamily.bold,
+                fontWeight: FontWeight.bold,
+                color: AppColors.grey,
+                letterSpacing: 0.88,
+                textBaseline: TextBaseline.alphabetic,
+                inherit: false,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -101,7 +121,9 @@ class _LoginScreenState extends State<LoginScreen> {
             margin: EdgeInsets.only(
               top: Sizes.s50,
             ),
-            child: Image(height: screenHeight * 0.323, image: AssetImage(Assets.iconConfiti)),
+            child: Image(
+                height: screenHeight * 0.323,
+                image: AssetImage(Assets.family)),
           ),
           Container(
             margin: EdgeInsets.only(
@@ -147,7 +169,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: Text(
               "Verification",
-              style: TextStyles.headingTitle,
+              style: TextStyle(
+                fontSize: FontSize.s30,
+                // fontFamily: FontFamily.bold,
+                fontWeight: FontWeight.w300,
+                color: AppColors.lightBlack,
+                letterSpacing: 0.88,
+                textBaseline: TextBaseline.alphabetic,
+                inherit: false,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -158,7 +188,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: Text(
               "Please enter the OTP that\n you have recived.",
-              style: TextStyles.headingTitle,
+              style: TextStyle(
+                fontSize: FontSize.s18,
+                // fontFamily: FontFamily.bold,
+                fontWeight: FontWeight.bold,
+                color: AppColors.grey,
+                letterSpacing: 0.88,
+                textBaseline: TextBaseline.alphabetic,
+                inherit: false,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -232,7 +270,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   gotoPage(int index) {
-    _pageController.animateToPage(index, duration: Duration(milliseconds: 700), curve: Curves.easeIn);
+    _pageController.animateToPage(index,
+        duration: Duration(milliseconds: 700), curve: Curves.easeIn);
   }
 
   void sendOTP() async {
@@ -252,7 +291,8 @@ class _LoginScreenState extends State<LoginScreen> {
       showErrorAlert(context: context, message: error.message);
     };
 
-    final PhoneCodeSent codeSent = (String verificationId, [int forceResendingToken]) {
+    final PhoneCodeSent codeSent =
+        (String verificationId, [int forceResendingToken]) {
       appLogs('codeSent');
 
       _verificationId = verificationId;
@@ -262,7 +302,8 @@ class _LoginScreenState extends State<LoginScreen> {
       gotoPage(1);
     };
 
-    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {
+    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+        (String verificationId) {
       appLogs('codeAutoRetrievalTimeout');
       _verificationId = verificationId;
     };
@@ -288,7 +329,8 @@ class _LoginScreenState extends State<LoginScreen> {
           verificationId: _verificationId,
           smsCode: _otp,
         );
-        _firebaseUser = await FirebaseAuth.instance.signInWithCredential(credential);
+        _firebaseUser =
+            await FirebaseAuth.instance.signInWithCredential(credential);
       } catch (e) {
         _error = e;
       }
@@ -315,7 +357,8 @@ class _LoginScreenState extends State<LoginScreen> {
     DataSnapshot userDS = await userRef.child(_firebaseUser.uid).once();
 
     if (userDS != null && userDS.value != null) {
-      User user = new User.fromSnapshot(snapshot: userDS, tempUID: _firebaseUser.uid);
+      User user =
+          new User.fromSnapshot(snapshot: userDS, tempUID: _firebaseUser.uid);
       auth.currentUser = user;
       await updateUserInSharedPreference();
 

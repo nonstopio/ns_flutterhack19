@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: App.appName,
       debugShowCheckedModeBanner: false,
-      // home: SplashScreen(),
-      home: ViewFeedsScreen(),
+      home: SplashScreen(),
+      // home: ViewFeedsScreen(),
       theme: ThemeData(
         // primarySwatch: Colors.blue,
         fontFamily: 'Rubik',
