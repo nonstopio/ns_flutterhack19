@@ -21,7 +21,8 @@ class AddExpenseScreen extends StatefulWidget {
 }
 
 class _AddExpenseScreenState extends State<AddExpenseScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('AddExpenseScreen');
+  GlobalKey<ScaffoldState> _scaffoldKey =
+      new GlobalObjectKey<ScaffoldState>('AddExpenseScreen');
 
   Expense _expense = Expense.empty();
 
@@ -34,7 +35,8 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   void initState() {
     super.initState();
     appLogs("AddExpenseScreen", tag: "Screen");
-    Future.delayed(Duration(milliseconds: 500), () => getAddExpenseScreenDetails());
+    Future.delayed(
+        Duration(milliseconds: 500), () => getAddExpenseScreenDetails());
   }
 
   getAddExpenseScreenDetails() async {
@@ -130,7 +132,8 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
               appLogs(toDouble(_expense.amount));
               appLogs(_expense.description);
 
-              if (toDouble(_expense.amount) == 0 || _expense.description.isEmpty) {
+              if (toDouble(_expense.amount) == 0 ||
+                  _expense.description.isEmpty) {
                 AppToast.showError("Error");
                 return;
               }
@@ -196,26 +199,45 @@ class ExpenseWidget extends StatelessWidget {
   final Expense expense;
   final String circleId;
 
-  const ExpenseWidget({Key key, @required this.expense, this.circleId}) : super(key: key);
+  const ExpenseWidget({Key key, @required this.expense, this.circleId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(Sizes.s8),
+      margin: EdgeInsets.all(Sizes.s8),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black38,
+            blurRadius: 20.0,
+          )
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(5.0),
+      ),
       child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
               AppCircularImage(
                 imageURL: expense.image,
+                radius: 30.0,
               ),
               Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: Text(
-                      expense.description,
+                flex: 2,
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    expense.description,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w300,
                     ),
-                  )),
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 1,
                 child: Text(
@@ -224,52 +246,60 @@ class ExpenseWidget extends StatelessWidget {
                       expense.amount,
                     ),
                   ),
+                  style: TextStyle(
+                    fontSize: 30.0,
+                  ),
                 ),
               )
             ],
           ),
           Row(
             children: <Widget>[
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(FontAwesomeIcons.thumbsUp),
-                      onPressed: () async {
-                        double total = toDouble(
-                                (await circleExpenseRef.child(circleId).child(expense.id).child(Strings.like).once())
-                                    .value) ??
-                            0;
-                        total = total + 1;
-                        await circleExpenseRef.child(circleId).child(expense.id).update({Strings.like: "$total"});
-                        AppToast.showSuccess("Liked");
-                      },
-                    ),
-                    P10(),
-                    Text(likeFormat(value: toDouble(expense.like)))
-                  ],
+              IconButton(
+                icon: Icon(FontAwesomeIcons.thumbsUp),
+                onPressed: () async {
+                  double total = toDouble((await circleExpenseRef
+                              .child(circleId)
+                              .child(expense.id)
+                              .child(Strings.like)
+                              .once())
+                          .value) ??
+                      0;
+                  total = total + 1;
+                  await circleExpenseRef
+                      .child(circleId)
+                      .child(expense.id)
+                      .update({Strings.like: "$total"});
+                  AppToast.showSuccess("Liked");
+                },
+              ),
+              // P10(),
+              Text(
+                likeFormat(
+                  value: toDouble(expense.like),
                 ),
               ),
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(FontAwesomeIcons.thumbsDown),
-                      onPressed: () async {
-                        double total = toDouble(
-                                (await circleExpenseRef.child(circleId).child(expense.id).child(Strings.dislike).once())
-                                    .value) ??
-                            0;
-                        total = total + 1;
-                        await circleExpenseRef.child(circleId).child(expense.id).update({Strings.dislike: "$total"});
-                        AppToast.showSuccess("Liked");
-                      },
-                    ),
-                    P10(),
-                    Text(likeFormat(value: toDouble(expense.dislike)))
-                  ],
-                ),
+              P10(),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.thumbsDown),
+                onPressed: () async {
+                  double total = toDouble((await circleExpenseRef
+                              .child(circleId)
+                              .child(expense.id)
+                              .child(Strings.dislike)
+                              .once())
+                          .value) ??
+                      0;
+                  total = total + 1;
+                  await circleExpenseRef
+                      .child(circleId)
+                      .child(expense.id)
+                      .update({Strings.dislike: "$total"});
+                  AppToast.showSuccess("Liked");
+                },
               ),
+              // P10(),
+              Text(likeFormat(value: toDouble(expense.dislike))),
             ],
           ),
         ],

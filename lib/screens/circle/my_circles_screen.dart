@@ -54,38 +54,36 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
     );
   }
 
-  Widget _getCircleWidget() {
-    return Container(
-      child: ReactiveWidget<Map>(
-        reactiveRef: getMyCircles(),
-        widgetBuilder: (Map data) {
-          if (data != null) {
-            List<CircleModel> _circleList = [];
-
-            data.forEach((k, v) {
-              _circleList.add(CircleModel.fromMap(data: v, id: k));
-            });
-
-            return GridView.count(
-              crossAxisCount: 2,
-              children: _circleList.map((circleData) {
-                return CircleCard(
-                  circle: circleData,
-                  onTap: () async {},
-                );
-              }).toList(),
-            );
-          }
-
-          return Container();
-        },
-        fallbackValue: Map(),
-      ),
-    );
-  }
-
   Widget getBody() {
-    return _getCircleWidget();
+    return ReactiveWidget<Map>(
+      reactiveRef: getMyCircles(),
+      widgetBuilder: (Map data) {
+        if (data != null) {
+          List<CircleModel> _circleList = [];
+
+          data.forEach((k, v) {
+            _circleList.add(CircleModel.fromMap(data: v, id: k));
+          });
+
+          return GridView.count(
+            crossAxisCount: 2,
+            children: _circleList.map((circleData) {
+              return CircleCard(
+                circle: circleData,
+                onTap: () async {
+                  // setState(() {
+                  //   _selectedCircleId = circleData.id;
+                  // });
+                },
+              );
+            }).toList(),
+          );
+        }
+
+        return Container();
+      },
+      fallbackValue: Map(),
+    );
   }
 
   Widget getLoaderWidget() {
