@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutterhackathon/components/app_button.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
-import 'package:flutterhackathon/components/user_card.dart';
-import 'package:flutterhackathon/screens/circle/invite_member_screen.dart';
 import 'package:flutterhackathon/theme/app_assets.dart';
 import 'package:flutterhackathon/theme/app_decorations.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
 
-class AddCircleScreen extends StatefulWidget {
+class AddExpenseScreen extends StatefulWidget {
   @override
-  _AddCircleScreenState createState() => _AddCircleScreenState();
+  _AddExpenseScreenState createState() => _AddExpenseScreenState();
 }
 
-class _AddCircleScreenState extends State<AddCircleScreen> {
+class _AddExpenseScreenState extends State<AddExpenseScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey =
-      new GlobalObjectKey<ScaffoldState>('AddCircleScreen');
+      new GlobalObjectKey<ScaffoldState>('AddExpenseScreen');
 
   PageState _pageState = PageState.Loading;
   String message = "";
@@ -23,12 +21,12 @@ class _AddCircleScreenState extends State<AddCircleScreen> {
   @override
   void initState() {
     super.initState();
-    appLogs("AddCircleScreen", tag: "Screen");
+    appLogs("AddExpenseScreen", tag: "Screen");
     Future.delayed(
-        Duration(milliseconds: 500), () => getAddCircleScreenDetails());
+        Duration(milliseconds: 500), () => getAddExpenseScreenDetails());
   }
 
-  getAddCircleScreenDetails() async {
+  getAddExpenseScreenDetails() async {
     hideLoading();
   }
 
@@ -36,10 +34,10 @@ class _AddCircleScreenState extends State<AddCircleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('New Circle'),
+        title: Text('Add Expense'),
       ),
+      backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
           getBody(),
@@ -47,45 +45,6 @@ class _AddCircleScreenState extends State<AddCircleScreen> {
           getErrorWidget(),
         ],
       ),
-    );
-  }
-
-  Widget getBody() {
-    return ListView(
-      children: <Widget>[
-        _buidlTopWidget(),
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Members',
-            style: TextStyle(
-              color: Colors.grey,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        UserCard(
-          child: Center(
-            child: Text(
-              'Arnold Parge',
-              style: TextStyle(
-                color: Colors.grey[200],
-                fontSize: 20.0,
-              ),
-            ),
-          ),
-          image: Assets.tempGroupPhoto,
-          height: 70.0,
-        ),
-        AppButton(
-          onTap: () {
-            AppRoutes.push(context, InviteMemberScreen());
-          },
-          title: 'Invite Member',
-          color: Colors.red,
-        ),
-      ],
     );
   }
 
@@ -104,13 +63,47 @@ class _AddCircleScreenState extends State<AddCircleScreen> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: AppDecorations.input(
-                label: 'Circle Name',
-                hintText: 'Enter new circle name',
+                label: 'Amount',
+                hintText: 'Enter the amount spending',
                 error: null,
               ),
             ),
           ),
-        )
+        ),
+      ],
+    );
+  }
+
+  Widget getBody() {
+    return Column(
+      children: <Widget>[
+        Flexible(
+          child: ListView(
+            children: <Widget>[
+              _buidlTopWidget(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  decoration: AppDecorations.input(
+                    label: 'Description',
+                    hintText: 'Enter the description of the expense',
+                    error: null,
+                  ),
+                  maxLines: 5,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AppButton(
+            title: 'Add',
+            onTap: () {
+              
+            },
+          ),
+        ),
       ],
     );
   }
@@ -127,25 +120,25 @@ class _AddCircleScreenState extends State<AddCircleScreen> {
       offstage: _pageState != PageState.Error,
       child: AppErrorWidget(
         message: message,
-        callback: () => getAddCircleScreenDetails(),
+        callback: () => getAddExpenseScreenDetails(),
       ),
     );
   }
 
   showLoading() {
-    appLogs("AddCircleScreen:showLoading");
+    appLogs("AddExpenseScreen:showLoading");
 
     setState(() => _pageState = PageState.Loading);
   }
 
   hideLoading() {
-    appLogs("AddCircleScreen:hideLoading");
+    appLogs("AddExpenseScreen:hideLoading");
 
     setState(() => _pageState = PageState.Loaded);
   }
 
   showError() {
-    appLogs("AddCircleScreen:showError");
+    appLogs("AddExpenseScreen:showError");
 
     setState(() => _pageState = PageState.Error);
   }

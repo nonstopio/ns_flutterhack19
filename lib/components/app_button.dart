@@ -15,7 +15,7 @@ class AppButton extends StatelessWidget {
 
   AppButton({
     @required this.onTap,
-    this.title,
+    @required this.title,
     this.height = 45.0,
     this.width,
     this.enabled = true,
