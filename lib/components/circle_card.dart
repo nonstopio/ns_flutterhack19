@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/models/circle_model.dart';
+import 'package:flutterhackathon/models/models.dart';
 import 'package:flutterhackathon/theme/app_assets.dart';
 import 'package:flutterhackathon/utils/app_size.dart';
 // import 'package:kingdom/dialogs/kingdom_options.dart';

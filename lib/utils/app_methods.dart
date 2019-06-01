@@ -162,6 +162,13 @@ String moneyFormat({@required double value}) {
   return numberFormat.format(value);
 }
 
+String likeFormat({@required double value}) {
+  NumberFormat numberFormat = NumberFormat.currency(
+    decimalDigits: 0,
+    symbol: "",
+  );
+  return numberFormat.format(value);
+}
 
 int toINT(Object value) {
   if (value != null) {
@@ -178,11 +185,13 @@ int toINT(Object value) {
 }
 
 double toDouble(Object value) {
+  appLogs("toDouble");
+  appLogs(value);
   if (value != null) {
     try {
       double number = double.tryParse('$value');
       return number;
-    } on Exception catch (e, s) {
+    } catch (e, s) {
       appLogs("toDouble Exception : $e\n$s");
 
       return 0;

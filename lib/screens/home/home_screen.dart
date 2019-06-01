@@ -1,16 +1,14 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
-import 'package:flutterhackathon/components/app_image.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/components/app_recactive_widget.dart';
 import 'package:flutterhackathon/components/circle_card.dart';
-import 'package:flutterhackathon/models/circle_model.dart';
+import 'package:flutterhackathon/expense/add_expense_screen.dart';
+import 'package:flutterhackathon/models/models.dart';
 import 'package:flutterhackathon/services/firebase.dart';
 import 'package:flutterhackathon/services/services.dart';
 import 'package:flutterhackathon/utils/utils.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -59,6 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
           getErrorWidget(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () async {
+            AppRoutes.push(
+                context,
+                AddExpenseScreen(
+                  circleId: _selectedCircleId,
+                ));
+          }),
     );
   }
 
@@ -97,20 +104,31 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _getFeedWidget() {
+  Widget _getExpenseWidget() {
     return Flexible(
-      child: FirebaseAnimatedList(
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation animation, int index) {
-          if (snapshot.value != null) {
-            print("getPaymentHistory ${snapshot.value}");
-            return Container();
+      child: ReactiveWidget<Map>(
+        reactiveRef: getMyCirclesFeed(_selectedCircleId),
+        widgetBuilder: (Map data) {
+          if (data != null) {
+            List<Expense> _expenseList = [];
+
+            data.forEach((k, v) {
+              _expenseList.add(Expense.fromMap(data: v, id: k));
+            });
+
+            return ListView(
+              children: _expenseList.map((expense) {
+                return ExpenseWidget(
+                  expense: expense,
+                  circleId:_selectedCircleId
+                );
+              }).toList(),
+            );
           }
 
-          return C0();
+          return Container();
         },
-        query: getCircleFeed(_selectedCircleId),
-        defaultChild: CircularProgressIndicator(),
+        fallbackValue: Map(),
       ),
     );
   }
@@ -119,67 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       children: <Widget>[
         _getCircleWidget(),
-        _getFeedWidget(),
-        Container(
-          padding: EdgeInsets.all(Sizes.s8),
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  AppCircularImage(
-                    imageURL:
-                        "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                  ),
-                  Expanded(
-                      flex: 2,
-                      child: Container(
-                        child: Text(
-                          "Description",
-                        ),
-                      )),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      moneyFormat(
-                        value: toDouble(
-                          "123",
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.thumbsUp),
-                          onPressed: () {},
-                        ),
-                        P10(),
-                        Text("100")
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.thumbsDown),
-                          onPressed: () {},
-                        ),
-                        P10(),
-                        Text("100")
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        )
+        _getExpenseWidget(),
       ],
     );
   }

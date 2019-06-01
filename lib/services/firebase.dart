@@ -15,8 +15,7 @@ final _rootRef = database.reference().child(_prefix);
 
 final userRef = _rootRef.child('user');
 final circleRef = _rootRef.child('circle');
-final circleFeedRef = _rootRef.child('circle_feed');
-final expenseRef = _rootRef.child('expense');
+final circleExpenseRef = _rootRef.child('circle_expense');
 final userCircleRef = _rootRef.child('user_circle');
 
 class ReactiveRef<DataType> {
@@ -87,6 +86,10 @@ ReactiveRef<Map> getMyCircles() {
   return new ReactiveRef(userCircleRef.child(auth.currentUser.uid));
 }
 
+ReactiveRef<Map> getMyCirclesFeed(String circleId) {
+  return new ReactiveRef(circleExpenseRef.child(circleId));
+}
+
 Query getCircleFeed(String circleId) {
-  return circleFeedRef.child(circleId);
+  return circleExpenseRef.child(circleId).orderByChild('amount');
 }
