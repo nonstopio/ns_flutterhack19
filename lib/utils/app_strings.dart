@@ -61,6 +61,9 @@ class Strings {
 
   static const String userName = "Name";
 
+  static const String description = "description";
+
+
   static const String fcmToken = "fcm_token";
 
   static const String createdAt = "created_at";
@@ -279,7 +282,6 @@ class Strings {
   static const String occupation = "Occupation";
   static const String company = "Company";
   static const String designation = "Designation";
-  static const String description = "Description";
   static const String workDomain = "Work Domain";
   static const String experience = "Years of Experience";
   static const String saveOccupationDetails = "SAVE OCCUPATION DETAILS";

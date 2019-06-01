@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhackathon/models/circle_model.dart';
 import 'package:flutterhackathon/theme/app_assets.dart';
+import 'package:flutterhackathon/utils/app_size.dart';
 // import 'package:kingdom/dialogs/kingdom_options.dart';
 
 class CircleCard extends StatefulWidget {
+  final CircleModel circle;
+  final Function onTap;
+
+  const CircleCard({Key key, @required this.circle, this.onTap}) : super(key: key);
+
   @override
   _CircleCardState createState() => new _CircleCardState();
 }
@@ -18,6 +25,7 @@ class _CircleCardState extends State<CircleCard> {
     return new InkWell(
       child: new Center(
         child: new Container(
+          margin: EdgeInsets.all(Sizes.s8),
           child: new Stack(
             children: <Widget>[
               new Positioned(
@@ -53,7 +61,7 @@ class _CircleCardState extends State<CircleCard> {
               new Positioned(
                 child: Center(
                   child: new Text(
-                    'Jenny',
+                    widget.circle.name,
                     style: new TextStyle(color: Colors.white),
                   ),
                 ),
@@ -67,32 +75,7 @@ class _CircleCardState extends State<CircleCard> {
           width: circleCardWidth,
         ),
       ),
-      onTap: () {
-        // kingdomOptions(
-        //     context: context,
-        //     kingdomOptionsDetails: [
-        //         {
-        //             "icon": Icons.person,
-        //             "text": 'View Profile',
-        //         },
-        //         {
-        //             "icon": Icons.restore_from_trash,
-        //             "text": 'Hide Post',
-        //         },
-        //         {
-        //             "icon": Icons.report,
-        //             "text": 'Report Abuse',
-        //         },
-        //         {
-        //             "icon": Icons.cancel,
-        //             "text": 'Cancel',
-        //             "onTap": () {
-        //                 Navigator.of(context, rootNavigator: true).pop();
-        //             }
-        //         },
-        //     ]
-        // );
-      },
+      onTap: widget.onTap,
     );
   }
 }

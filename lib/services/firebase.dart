@@ -15,6 +15,8 @@ final _rootRef = database.reference().child(_prefix);
 
 final userRef = _rootRef.child('user');
 final circleRef = _rootRef.child('circle');
+final circleFeedRef = _rootRef.child('circle_feed');
+final expenseRef = _rootRef.child('expense');
 final userCircleRef = _rootRef.child('user_circle');
 
 class ReactiveRef<DataType> {
@@ -73,13 +75,18 @@ Future<Null> createDefaultCircle() async {
     Strings.name: "My Circle",
     Strings.description: "My first circle",
     Strings.createdBy: auth.currentUser.uid,
-    Strings.authToken: auth.currentUser.authToken,
     Strings.totalFunds: "00.00",
   });
 
   await userCircleRef.child(auth.currentUser.uid).child(circleId).set({
     Strings.name: "My Circle",
   });
+}
 
+ReactiveRef<Map> getMyCircles() {
+  return new ReactiveRef(userCircleRef.child(auth.currentUser.uid));
+}
 
+Query getCircleFeed(String circleId) {
+  return circleFeedRef.child(circleId);
 }

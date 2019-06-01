@@ -161,3 +161,32 @@ String moneyFormat({@required double value}) {
   );
   return numberFormat.format(value);
 }
+
+
+int toINT(Object value) {
+  if (value != null) {
+    try {
+      int number = int.tryParse('$value');
+      return number;
+    } on Exception catch (e, s) {
+      appLogs("toINT Exception : $e\n$s");
+
+      return 0;
+    }
+  }
+  return 0;
+}
+
+double toDouble(Object value) {
+  if (value != null) {
+    try {
+      double number = double.tryParse('$value');
+      return number;
+    } on Exception catch (e, s) {
+      appLogs("toDouble Exception : $e\n$s");
+
+      return 0;
+    }
+  }
+  return 0;
+}
