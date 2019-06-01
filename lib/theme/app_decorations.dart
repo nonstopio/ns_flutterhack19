@@ -4,6 +4,7 @@ import 'package:flutterhackathon/theme/theme.dart';
 class AppDecorations {
   static InputDecoration input({String label, String error, String hintText}) {
     return InputDecoration(
+      alignLabelWithHint: true,
       contentPadding: EdgeInsets.all(20.0),
       hasFloatingPlaceholder: true,
       focusedBorder: OutlineInputBorder(
