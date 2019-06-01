@@ -41,23 +41,25 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
           getErrorWidget(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
     );
   }
 
   Widget getBody() {
-    return Center(
-      child: GridView.count(
-        crossAxisCount: 2,
-        children: <Widget>[
-          CircleCard(),
-          CircleCard(),
-          CircleCard(),
-          CircleCard(),
-          CircleCard(),
-          CircleCard(),
-          CircleCard(),
-        ],
-      ),
+    return GridView.count(
+      crossAxisCount: 2,
+      children: <Widget>[
+        CircleCard(),
+        CircleCard(),
+        CircleCard(),
+        CircleCard(),
+        CircleCard(),
+        CircleCard(),
+        CircleCard(),
+      ],
     );
   }
 
