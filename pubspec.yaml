@@ -1,0 +1,178 @@
+name: flutterhackathon
+description: A new Flutter application.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  firebase_auth: ^0.11.1+1
+  intl: ^0.15.8
+  http: ^0.12.0+2
+  connectivity: ^0.4.3+1
+  shared_preferences: ^0.5.2
+  firebase_messaging: ^5.0.1+1
+  firebase_analytics: ^3.0.1
+  country_code_picker: ^1.1.2
+  image_picker: ^0.6.0+2
+  cached_network_image: ^0.7.0
+  flutter_html: ^0.9.6
+  dio: ^2.1.3
+  uuid: ^2.0.1
+  url_launcher: ^5.0.2
+  flutter_screenutil: ^0.5.2
+  sqflite: ^1.1.5
+  path_provider: ^0.5.0+1
+  shimmer: ^1.0.0
+  fluttertoast: ^3.0.4
+  flushbar: ^1.5.0
+  flutter_native_image:
+    git: https://github.com/btastic/flutter_native_image.git
+  photo_view: 0.3.1
+  package_info: ^0.4.0+3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  #
+  assets:
+    - assets/wordsmaya_logo.png
+    - assets/wordsmaya-about.png
+    - assets/icon-home-inactive.png
+    - assets/icon-course-inactive.png
+    - assets/icon-library-inactive.png
+    - assets/icon-support-inactive.png
+    - assets/icon-upload-image.png
+    - assets/icon-upload-audio.png
+    - assets/icon-upload-pdf.png
+    - assets/icon-upload-video.png
+    - assets/icon-camera.png
+    - assets/bg-screen.png
+    - assets/gold-medal-black-border.png
+    - assets/silver-medal-black-border.png
+    - assets/bronze-medal-black-border.png
+    - assets/icon-karma-points.png
+    - assets/icon-library-inactive1.png
+    - assets/bronze_icon.png
+    - assets/gold_icon.png
+    - assets/silver_icon.png
+    - assets/icon-feedback.png
+    - assets/icon-star-filled.png
+    - assets/icon-star-unfilled.png
+    - assets/icon-access.png
+    - assets/icon-home.png
+    - assets/icon-course.png
+    - assets/icon-library.png
+    - assets/icon-support.png
+    - assets/icon-default-skill.png
+    - assets/icon-default-feedback.png
+    - assets/icon-default-library.png
+    - assets/doodle.png
+
+    # bottom navigation
+    - assets/icon-course-active.png
+    - assets/icon-course-inactive.png
+    - assets/icon-home-active.png
+    - assets/icon-home-inactive.png
+    - assets/icon-library-active.png
+    - assets/icon-library-inactive.png
+    - assets/icon-support-active.png
+    - assets/icon-support-inactive.png
+
+    # drawer
+    - assets/icon-about-inactive.png
+    - assets/icon-notification-inactive.png
+    - assets/icon-profile-inactive.png
+    - assets/icon-settings-inactive.png
+
+    # course screen
+    - assets/icon-karma-points.png
+    - assets/bronze-medal-white-border.png
+    - assets/silver-medal-white-border.png
+    - assets/gold-medal-white-border.png
+    - assets/icon-assignment.png
+    - assets/icon-webinar.png
+    - assets/icon-workshop.png
+    - assets/quiz-unlock.png
+    - assets/icon-chat.png
+    - assets/icon-default-course.png
+
+    #alert
+    - assets/alert-error.png
+    - assets/alert-success.png
+    - assets/alert-warning.png
+
+
+    - assets/icon-delete.png
+    - assets/icon-search.png
+
+    - assets/illus-1.png
+    - assets/illus-2.png
+    - assets/illus-3.png
+    - assets/info-i-icon.png
+    - assets/left-nav-about.png
+    - assets/left-nav-all-courses.png
+    - assets/left-nav-home.png
+    - assets/left-nav-library.png
+    - assets/left-nav-logout.png
+    - assets/left-nav-my-profile.png
+    - assets/left-nav-notifications.png
+    - assets/left-nav-settings.png
+    - assets/left-nav-support.png
+    - assets/icon-leaderboard.png
+    - assets/icon-folder.png
+    - assets/placeholder.png
+    - assets/icon-key.png
+    - assets/icon_confiti.png
+
+
+  fonts:
+    - family: PollyRounded-Bold
+      fonts:
+        - asset: fonts/PollyRounded-Bold.ttf
+
+    - family: PollyRounded-Light
+      fonts:
+        - asset: fonts/PollyRounded-Light.ttf
+
+    - family: PollyRounded-Thin
+      fonts:
+        - asset: fonts/PollyRounded-Thin.ttf
+
+    - family: PollyRounded-Regular
+      fonts:
+        - asset: fonts/PollyRounded-Regular.ttf
+
+    - family: Loader-font
+      fonts:
+        - asset: fonts/loader-font.ttf
+
