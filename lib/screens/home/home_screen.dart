@@ -91,6 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     setState(() {
                       _selectedCircleId = circleData.id;
                     });
+
+                    appLogs("Circle Id Selected");
+                    appLogs(_selectedCircleId);
                   },
                 );
               }).toList(),
@@ -112,16 +115,13 @@ class _HomeScreenState extends State<HomeScreen> {
           if (data != null) {
             List<Expense> _expenseList = [];
 
-            data.forEach((k, v) {
-              _expenseList.add(Expense.fromMap(data: v, id: k));
+            data.forEach((k, value) {
+              _expenseList.add(Expense.fromMap(data: value, id: k));
             });
 
             return ListView(
               children: _expenseList.map((expense) {
-                return ExpenseWidget(
-                  expense: expense,
-                  circleId:_selectedCircleId
-                );
+                return ExpenseWidget(expense: expense, circleId: _selectedCircleId);
               }).toList(),
             );
           }

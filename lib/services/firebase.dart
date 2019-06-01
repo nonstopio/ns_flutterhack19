@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_native_image/flutter_native_image.dart';
+import 'package:flutterhackathon/models/models.dart';
 import 'package:flutterhackathon/services/services.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:path/path.dart';
@@ -66,14 +67,6 @@ Future<Null> createDefaultCircle() async {
     Strings.name: "My Circle",
     Strings.description: "My first circle",
     Strings.createdBy: auth.currentUser.uid,
-    Strings.authToken: auth.currentUser.authToken,
-    Strings.totalFunds: "00.00",
-  });
-
-  await defaultCircle.set({
-    Strings.name: "My Circle",
-    Strings.description: "My first circle",
-    Strings.createdBy: auth.currentUser.uid,
     Strings.totalFunds: "00.00",
   });
 
@@ -82,11 +75,29 @@ Future<Null> createDefaultCircle() async {
   });
 }
 
+Future<Null> addCircle(CircleModel circle) async {
+  DatabaseReference defaultCircle = circleRef.push();
+
+  String circleId = defaultCircle.key;
+
+  await defaultCircle.set({
+    Strings.name: circle.name,
+    Strings.description: circle.description,
+    Strings.createdBy: auth.currentUser.uid,
+    Strings.totalFunds: "00.00",
+  });
+
+  await userCircleRef.child(auth.currentUser.uid).child(circleId).set({
+    Strings.name: circle.name,
+  });
+}
+
 ReactiveRef<Map> getMyCircles() {
   return new ReactiveRef(userCircleRef.child(auth.currentUser.uid));
 }
 
 ReactiveRef<Map> getMyCirclesFeed(String circleId) {
+  appLogs(circleId);
   return new ReactiveRef(circleExpenseRef.child(circleId));
 }
 

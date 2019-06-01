@@ -30,9 +30,9 @@ class CircleModel {
   }) {
     try {
       return CircleModel(
-        id: data['id'] ?? "",
+        id: id,
         name: data[Strings.name] ?? "",
-        description: data[Strings.designation] ?? "",
+        description: data[Strings.description] ?? "",
         createdBy: data[Strings.createdBy] ?? "",
         totalFunds: data[Strings.totalFunds] ?? "",
       );
