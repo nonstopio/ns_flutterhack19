@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/Utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
-import 'package:flutterhackathon/components/circle_card.dart';
-import 'package:flutterhackathon/screens/circle/add_circle_screen.dart';
 
-class MyCirclesScreen extends StatefulWidget {
+class AddCircleScreen extends StatefulWidget {
   @override
-  _MyCirclesScreenState createState() => _MyCirclesScreenState();
+  _AddCircleScreenState createState() => _AddCircleScreenState();
 }
 
-class _MyCirclesScreenState extends State<MyCirclesScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('MyCirclesScreen');
+class _AddCircleScreenState extends State<AddCircleScreen> {
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('AddCircleScreen');
 
   PageState _pageState = PageState.Loading;
   String message = "";
@@ -19,11 +17,11 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
   @override
   void initState() {
     super.initState();
-    appLogs("MyCirclesScreen", tag: "Screen");
-    Future.delayed(Duration(milliseconds: 500), () => getMyCirclesScreenDetails());
+    appLogs("AddCircleScreen", tag: "Screen");
+    Future.delayed(Duration(milliseconds: 500), () => getAddCircleScreenDetails());
   }
 
-  getMyCirclesScreenDetails() async {
+  getAddCircleScreenDetails() async {
     hideLoading();
   }
 
@@ -32,9 +30,6 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('My Circles'),
-      ),
       body: Stack(
         children: <Widget>[
           getBody(),
@@ -42,28 +37,11 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
           getErrorWidget(),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          AppRoutes.push(context, AddCircleScreen());
-        },
-      ),
     );
   }
 
   Widget getBody() {
-    return GridView.count(
-      crossAxisCount: 2,
-      children: <Widget>[
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-      ],
-    );
+    return ListView();
   }
 
   Widget getLoaderWidget() {
@@ -78,25 +56,25 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
       offstage: _pageState != PageState.Error,
       child: AppErrorWidget(
         message: message,
-        callback: () => getMyCirclesScreenDetails(),
+        callback: () => getAddCircleScreenDetails(),
       ),
     );
   }
 
   showLoading() {
-    appLogs("MyCirclesScreen:showLoading");
+    appLogs("AddCircleScreen:showLoading");
 
     setState(() => _pageState = PageState.Loading);
   }
 
   hideLoading() {
-    appLogs("MyCirclesScreen:hideLoading");
+    appLogs("AddCircleScreen:hideLoading");
 
     setState(() => _pageState = PageState.Loaded);
   }
 
   showError() {
-    appLogs("MyCirclesScreen:showError");
+    appLogs("AddCircleScreen:showError");
 
     setState(() => _pageState = PageState.Error);
   }
