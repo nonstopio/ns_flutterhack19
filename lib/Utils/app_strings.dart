@@ -1,7 +1,7 @@
 class App {
-  static const int versionCode = 5;
-  static const String versionName = '1.0.9';
-  static const String appName = 'WordsMaya';
+  static const int versionCode = 1;
+  static const String versionName = '1.0.0';
+  static const String appName = 'We Spent';
   static bool devMode = true; //TODO:make it false for release
 }
 
@@ -20,7 +20,7 @@ class Strings {
 
   static const String accessCode = "accessCode";
 
-  static const String firstName = "firstName";
+  static const String name = "name";
 
   static const String lastName = "lastName";
 
@@ -80,6 +80,7 @@ class Strings {
   static const String letStart = "Let's Start";
 
   static const String timeOutMessage = "Timeout !\n Please check if you have good internet connection!\n Try Again";
+  static const String noInternetMessage = "Please check if you have good internet connection!\n Try Again";
 
   static const String errorMessage =
       "Something Went Wrong !\n Please check if you have good internet connection!\n Try Again";

@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhackathon/Services/services.dart';
 import 'package:flutterhackathon/screens/splash_screen.dart';
 
-void main() => runApp(MyApp());
+import 'Utils/app_strings.dart';
+
+void main() async {
+  await setUserFromSharedPreference();
+  await AppNotifications.init();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'NonstopIO',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: App.appName,
+      debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      theme: ThemeData(),
     );
   }
 }
