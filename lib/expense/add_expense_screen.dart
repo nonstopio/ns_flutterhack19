@@ -236,11 +236,9 @@ class ExpenseWidget extends StatelessWidget {
                     IconButton(
                       icon: Icon(FontAwesomeIcons.thumbsUp),
                       onPressed: () async {
-                        appLogs(circleId);
-                        appLogs(expense.id);
-                        appLogs(await circleExpenseRef.child(circleId).child(expense.id).once());
                         double total = toDouble(
-                                await circleExpenseRef.child(circleId).child(expense.id).once()) ??
+                                (await circleExpenseRef.child(circleId).child(expense.id).child(Strings.like).once())
+                                    .value) ??
                             0;
                         total = total + 1;
                         await circleExpenseRef.child(circleId).child(expense.id).update({Strings.like: "$total"});
@@ -257,7 +255,15 @@ class ExpenseWidget extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(FontAwesomeIcons.thumbsDown),
-                      onPressed: () {},
+                      onPressed: () async {
+                        double total = toDouble(
+                                (await circleExpenseRef.child(circleId).child(expense.id).child(Strings.dislike).once())
+                                    .value) ??
+                            0;
+                        total = total + 1;
+                        await circleExpenseRef.child(circleId).child(expense.id).update({Strings.dislike: "$total"});
+                        AppToast.showSuccess("Liked");
+                      },
                     ),
                     P10(),
                     Text(likeFormat(value: toDouble(expense.dislike)))
