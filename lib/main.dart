@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: App.appName,
       debugShowCheckedModeBanner: false,
       // home: SplashScreen(),
-      home: AddExpenseScreen(),
+      home: ViewFeedsScreen(),
       theme: ThemeData(
         // primarySwatch: Colors.blue,
         fontFamily: 'Rubik',
