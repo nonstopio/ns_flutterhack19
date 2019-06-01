@@ -1,16 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/services/auth.dart';
-import 'package:flutterhackathon/services/firebase.dart';
-import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_alerts.dart';
 import 'package:flutterhackathon/components/app_button.dart';
 import 'package:flutterhackathon/components/backgroud_image_widget.dart';
 import 'package:flutterhackathon/components/custom_text_form_dield.dart';
 import 'package:flutterhackathon/models/user_model.dart';
 import 'package:flutterhackathon/screens/home/home_screen.dart';
+import 'package:flutterhackathon/services/auth.dart';
+import 'package:flutterhackathon/services/firebase.dart';
 import 'package:flutterhackathon/theme/theme.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
@@ -208,6 +208,8 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
     await updateUserInSharedPreference();
 
     await updateUser();
+
+    await createDefaultCircle();
 
     AppRoutes.makeFirst(context, HomeScreen());
   }

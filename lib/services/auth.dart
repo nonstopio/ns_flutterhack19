@@ -51,20 +51,12 @@ Future<Null> updateUserInSharedPreference() async {
   logUser();
 }
 
-Future<Null> updateUser() async {
-  await userRef.child(auth.currentUser.uid).update({
-    Strings.name: auth.currentUser.name,
-    Strings.phone: auth.currentUser.phone,
-    Strings.email: auth.currentUser.email,
-    Strings.fcmToken: auth.currentUser.fcmToken,
-    Strings.authToken: auth.currentUser.authToken,
-    Strings.profileImageUrl: auth.currentUser.profileImageUrl,
-  });
 
 
 
 
-}
+
+
 
 logUser() {
   appLogs('''

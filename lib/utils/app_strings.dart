@@ -51,6 +51,10 @@ class Strings {
 
   static const String name = "name";
 
+  static const String totalFunds = "total_funds";
+
+  static const String createdBy = "created_by";
+
   static const String lastName = "lastName";
 
   static const String phone = "phone";
@@ -275,6 +279,7 @@ class Strings {
   static const String occupation = "Occupation";
   static const String company = "Company";
   static const String designation = "Designation";
+  static const String description = "Description";
   static const String workDomain = "Work Domain";
   static const String experience = "Years of Experience";
   static const String saveOccupationDetails = "SAVE OCCUPATION DETAILS";

@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (connectivityResult == ConnectivityResult.none) {
       AppRoutes.makeFirst(context, NoInternetScreen());
     } else {
-      if (auth.currentUser.loggedIn) {
+      if (!auth.currentUser.loggedIn) {
         AppRoutes.makeFirst(context, HomeScreen());
       } else {
         AppRoutes.makeFirst(context, TutorialScreen());
