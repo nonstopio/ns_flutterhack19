@@ -84,4 +84,7 @@ class Assets {
   static const String iconNavSupport = 'assets/left-nav-support.png';
   static const String placeholder = 'assets/placeholder.png';
   static const String iconConfiti = 'assets/icon_confiti.png';
+
+  //Temp assets
+  static const String tempGroupPhoto = 'assets/temp-group-photos.jpg';
 }

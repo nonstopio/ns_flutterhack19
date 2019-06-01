@@ -154,6 +154,9 @@ flutter:
     - assets/icon-key.png
     - assets/icon_confiti.png
 
+    #temp
+    - assets/temp-group-photos.jpg
+
 
   fonts:
     - family: PollyRounded-Bold

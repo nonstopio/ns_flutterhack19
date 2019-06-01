@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhackathon/screens/circle/my_circles_screen.dart';
 import 'package:flutterhackathon/screens/feed/view_feeds_screen.dart';
 import 'package:flutterhackathon/screens/splash_screen.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: SplashScreen(),
-      home: ViewFeedsScreen(),
+      home: MyCirclesScreen(),
     );
   }
 }
