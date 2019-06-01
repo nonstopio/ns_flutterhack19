@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhackathon/components/app_button.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/components/user_card.dart';
+import 'package:flutterhackathon/screens/circle/invite_member_screen.dart';
 import 'package:flutterhackathon/theme/app_assets.dart';
 import 'package:flutterhackathon/theme/app_decorations.dart';
 import 'package:flutterhackathon/utils/utils.dart';
@@ -75,7 +77,14 @@ class _AddCircleScreenState extends State<AddCircleScreen> {
           ),
           image: Assets.tempGroupPhoto,
           height: 70.0,
-        )
+        ),
+        AppButton(
+          onTap: () {
+            AppRoutes.push(context, InviteMemberScreen());
+          },
+          title: 'Invite Member',
+          color: Colors.red,
+        ),
       ],
     );
   }
