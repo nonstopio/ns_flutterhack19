@@ -10,7 +10,7 @@ class AppDecorations {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(9.0),
         borderSide: BorderSide(
-          color: AppColors.secondary,
+          color: Color(0xFF00AD99),
           style: BorderStyle.solid,
           width: 3.0,
         ),
@@ -18,7 +18,7 @@ class AppDecorations {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(9.0),
         borderSide: BorderSide(
-          color: AppColors.secondary,
+          color: Color(0xFF00AD99),
           style: BorderStyle.solid,
           width: 3.0,
         ),

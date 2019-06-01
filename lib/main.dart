@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       // home: ViewFeedsScreen(),
       theme: ThemeData(
-        // primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF00AD99),
+        accentColor: Color(0xFF00AD99),
+        // accentColor: Color(0xFFF24863),
         fontFamily: 'Rubik',
       ),
     );

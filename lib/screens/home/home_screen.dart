@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
+import 'package:flutterhackathon/expense/add_expense_screen.dart';
+import 'package:flutterhackathon/screens/circle/my_circles_screen.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
 
@@ -108,12 +110,14 @@ class _HomeScreenState extends State<HomeScreen>
         isMenuOpen
             ? new BackdropFilter(
                 filter: new ui.ImageFilter.blur(
-                  sigmaX: new Tween(begin: 0.0, end: 5.0)
-                      .animate(flyAnimCurve)
-                      .value,
-                  sigmaY: new Tween(begin: 0.0, end: 5.0)
-                      .animate(flyAnimCurve)
-                      .value,
+                  sigmaX: flyAnimCurve.isCompleted? 5.0: 0.0,
+                  // new Tween(begin: 0.0, end: 5.0)
+                  //     .animate(flyAnimCurve)
+                  //     .value,
+                  sigmaY: flyAnimCurve.isCompleted? 5.0: 0.0,
+                  // new Tween(begin: 0.0, end: 5.0)
+                  //     .animate(flyAnimCurve)
+                  //     .value,
                 ),
                 child: new Center(
                   child: new Container(
@@ -126,36 +130,38 @@ class _HomeScreenState extends State<HomeScreen>
             : new Container(),
         _fab(),
         _menuBtn(
-            title: 'Settings',
-            icon: Icons.settings,
+            title: 'Circle',
+            icon: Icons.blur_circular,
             top: (screenSize.height / 2) - 200.0,
             left: (screenSize.width / 2) - 50.0,
             onTap: () {
-              print('Settings pressed');
+              print('Circle pressed');
+              AppRoutes.push(context, MyCirclesScreen());
             }),
         _menuBtn(
-            title: 'Add Flat',
-            icon: Icons.home,
+            title: 'Notifications',
+            icon: Icons.notifications,
             top: (screenSize.height / 2) - 20.0,
             left: (screenSize.width / 2) - 50.0,
             onTap: () {
-              print('Add Flat pressed');
+              print('Notifications');
             }),
         _menuBtn(
-            title: 'Add Tenant',
-            icon: Icons.person_add,
+            title: '+ Expense',
+            icon: Icons.add_alarm,
             top: (screenSize.height / 2) - 110.0,
             left: (screenSize.width / 2) - 150.0,
             onTap: () {
-              print('Add Tenant pressed');
+              print('+ Expense');
+              AppRoutes.push(context, AddExpenseScreen());
             }),
         _menuBtn(
-            title: 'Check',
-            icon: Icons.check_circle,
+            title: 'Add Funds',
+            icon: Icons.monetization_on,
             top: (screenSize.height / 2) - 110.0,
             left: (screenSize.width / 2) + 50.0,
             onTap: () {
-              print('Check pressed');
+              print('Add Funds');
             }),
       ],
     );
