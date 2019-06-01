@@ -18,9 +18,11 @@ class MyApp extends StatelessWidget {
       title: App.appName,
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-//      home: AddExpenseScreen(),
+      // home: ViewFeedsScreen(),
       theme: ThemeData(
-        // primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF00AD99),
+        accentColor: Color(0xFF00AD99),
+        // accentColor: Color(0xFFF24863),
         fontFamily: 'Rubik',
       ),
     );

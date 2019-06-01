@@ -87,4 +87,6 @@ class Assets {
 
   //Temp assets
   static const String tempGroupPhoto = 'assets/temp-group-photos.jpg';
+
+  static const String family = 'assets/family.png';
 }

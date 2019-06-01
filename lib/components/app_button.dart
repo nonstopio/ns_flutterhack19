@@ -19,7 +19,7 @@ class AppButton extends StatelessWidget {
     this.height = 45.0,
     this.width,
     this.enabled = true,
-    this.color = AppColors.primary,
+    this.color = const Color(0xFF00AD99),
     this.child,
     this.full = false,
   })  : assert(title == null || child == null, 'Cannot provide both a title and a child'),
@@ -136,7 +136,7 @@ class AppTextButton extends StatelessWidget {
         child: Text(
           title,
           style: TextStyles.buttonText.copyWith(
-            color: AppColors.primary,
+            color: Color(0xFF00AD99),
           ),
         ),
       ),
@@ -159,7 +159,7 @@ class AppIconTextButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Sizes.s50),
-            color: AppColors.primary,
+            color: Color(0xFF00AD99),
           ),
           padding: EdgeInsets.all(Sizes.s5),
           child: Row(

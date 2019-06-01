@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/components/app_loading_widget.dart';
-import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
+import 'package:flutterhackathon/components/app_loading_widget.dart';
+import 'package:flutterhackathon/components/app_recactive_widget.dart';
 import 'package:flutterhackathon/components/circle_card.dart';
+import 'package:flutterhackathon/models/models.dart';
 import 'package:flutterhackathon/screens/circle/add_circle_screen.dart';
+import 'package:flutterhackathon/services/firebase.dart';
+import 'package:flutterhackathon/utils/utils.dart';
 
 class MyCirclesScreen extends StatefulWidget {
   @override
@@ -51,19 +54,38 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
     );
   }
 
-  Widget getBody() {
-    return GridView.count(
-      crossAxisCount: 2,
-      children: <Widget>[
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-      ],
+  Widget _getCircleWidget() {
+    return Container(
+      child: ReactiveWidget<Map>(
+        reactiveRef: getMyCircles(),
+        widgetBuilder: (Map data) {
+          if (data != null) {
+            List<CircleModel> _circleList = [];
+
+            data.forEach((k, v) {
+              _circleList.add(CircleModel.fromMap(data: v, id: k));
+            });
+
+            return GridView.count(
+              crossAxisCount: 2,
+              children: _circleList.map((circleData) {
+                return CircleCard(
+                  circle: circleData,
+                  onTap: () async {},
+                );
+              }).toList(),
+            );
+          }
+
+          return Container();
+        },
+        fallbackValue: Map(),
+      ),
     );
+  }
+
+  Widget getBody() {
+    return _getCircleWidget();
   }
 
   Widget getLoaderWidget() {
