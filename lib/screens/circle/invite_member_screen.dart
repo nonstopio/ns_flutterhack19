@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhackathon/components/app_button.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
+import 'package:flutterhackathon/theme/app_decorations.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
 
@@ -9,7 +11,8 @@ class InviteMemberScreen extends StatefulWidget {
 }
 
 class _InviteMemberScreenState extends State<InviteMemberScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('InviteMemberScreen');
+  GlobalKey<ScaffoldState> _scaffoldKey =
+      new GlobalObjectKey<ScaffoldState>('InviteMemberScreen');
 
   PageState _pageState = PageState.Loading;
   String message = "";
@@ -18,7 +21,8 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
   void initState() {
     super.initState();
     appLogs("InviteMemberScreen", tag: "Screen");
-    Future.delayed(Duration(milliseconds: 500), () => getInviteMemberScreenDetails());
+    Future.delayed(
+        Duration(milliseconds: 500), () => getInviteMemberScreenDetails());
   }
 
   getInviteMemberScreenDetails() async {
@@ -44,7 +48,28 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
   }
 
   Widget getBody() {
-    return Placeholder();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: AppDecorations.input(
+              label: 'Member Mobile Number',
+              hintText: 'Enter the member mobile number',
+              error: null,
+            ),
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.number,
+            autofocus: true,
+          ),
+        ),
+        AppButton(
+          onTap: () {},
+          title: 'Invite',
+        )
+      ],
+    );
   }
 
   Widget getLoaderWidget() {
