@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
+import 'package:flutterhackathon/components/app_recactive_widget.dart';
+import 'package:flutterhackathon/models/models.dart';
+import 'package:flutterhackathon/services/firebase.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
 import 'package:flutterhackathon/components/circle_card.dart';
@@ -11,7 +14,8 @@ class MyCirclesScreen extends StatefulWidget {
 }
 
 class _MyCirclesScreenState extends State<MyCirclesScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('MyCirclesScreen');
+  GlobalKey<ScaffoldState> _scaffoldKey =
+      new GlobalObjectKey<ScaffoldState>('MyCirclesScreen');
 
   PageState _pageState = PageState.Loading;
   String message = "";
@@ -20,7 +24,8 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
   void initState() {
     super.initState();
     appLogs("MyCirclesScreen", tag: "Screen");
-    Future.delayed(Duration(milliseconds: 500), () => getMyCirclesScreenDetails());
+    Future.delayed(
+        Duration(milliseconds: 500), () => getMyCirclesScreenDetails());
   }
 
   getMyCirclesScreenDetails() async {
@@ -52,17 +57,34 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
   }
 
   Widget getBody() {
-    return GridView.count(
-      crossAxisCount: 2,
-      children: <Widget>[
-        // CircleCard(),
-        // CircleCard(),
-        // CircleCard(),
-        // CircleCard(),
-        // CircleCard(),
-        // CircleCard(),
-        // CircleCard(),
-      ],
+    return ReactiveWidget<Map>(
+      reactiveRef: getMyCircles(),
+      widgetBuilder: (Map data) {
+        if (data != null) {
+          List<CircleModel> _circleList = [];
+
+          data.forEach((k, v) {
+            _circleList.add(CircleModel.fromMap(data: v, id: k));
+          });
+
+          return GridView.count(
+            crossAxisCount: 2,
+            children: _circleList.map((circleData) {
+              return CircleCard(
+                circle: circleData,
+                onTap: () async {
+                  // setState(() {
+                  //   _selectedCircleId = circleData.id;
+                  // });
+                },
+              );
+            }).toList(),
+          );
+        }
+
+        return Container();
+      },
+      fallbackValue: Map(),
     );
   }
 
