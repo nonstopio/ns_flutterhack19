@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Components/app_button.dart';
-import 'package:flutterhackathon/Screens/Login/login_screen.dart';
+import 'package:flutterhackathon/components/app_button.dart';
 import 'package:flutterhackathon/theme/theme.dart';
 import 'package:flutterhackathon/utils/app_size.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/backgroud_gredient_widget.dart';
+import 'package:flutterhackathon/screens/login/login_screen.dart';
 
 class TutorialScreen extends StatefulWidget {
   @override

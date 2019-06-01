@@ -3,13 +3,13 @@ import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_error_widget.dart';
 
-class DemoScreen extends StatefulWidget {
+class AddCircleScreen extends StatefulWidget {
   @override
-  _DemoScreenState createState() => _DemoScreenState();
+  _AddCircleScreenState createState() => _AddCircleScreenState();
 }
 
-class _DemoScreenState extends State<DemoScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('DemoScreen');
+class _AddCircleScreenState extends State<AddCircleScreen> {
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalObjectKey<ScaffoldState>('AddCircleScreen');
 
   PageState _pageState = PageState.Loading;
   String message = "";
@@ -17,11 +17,11 @@ class _DemoScreenState extends State<DemoScreen> {
   @override
   void initState() {
     super.initState();
-    appLogs("DemoScreen", tag: "Screen");
-    Future.delayed(Duration(milliseconds: 500), () => getDemoScreenDetails());
+    appLogs("AddCircleScreen", tag: "Screen");
+    Future.delayed(Duration(milliseconds: 500), () => getAddCircleScreenDetails());
   }
 
-  getDemoScreenDetails() async {
+  getAddCircleScreenDetails() async {
     hideLoading();
   }
 
@@ -41,7 +41,7 @@ class _DemoScreenState extends State<DemoScreen> {
   }
 
   Widget getBody() {
-    return Placeholder();
+    return ListView();
   }
 
   Widget getLoaderWidget() {
@@ -56,25 +56,25 @@ class _DemoScreenState extends State<DemoScreen> {
       offstage: _pageState != PageState.Error,
       child: AppErrorWidget(
         message: message,
-        callback: () => getDemoScreenDetails(),
+        callback: () => getAddCircleScreenDetails(),
       ),
     );
   }
 
   showLoading() {
-    appLogs("DemoScreen:showLoading");
+    appLogs("AddCircleScreen:showLoading");
 
     setState(() => _pageState = PageState.Loading);
   }
 
   hideLoading() {
-    appLogs("DemoScreen:hideLoading");
+    appLogs("AddCircleScreen:hideLoading");
 
     setState(() => _pageState = PageState.Loaded);
   }
 
   showError() {
-    appLogs("DemoScreen:showError");
+    appLogs("AddCircleScreen:showError");
 
     setState(() => _pageState = PageState.Error);
   }

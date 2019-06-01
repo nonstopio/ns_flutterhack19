@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Services/auth.dart';
+import 'package:flutterhackathon/services/auth.dart';
 import 'package:flutterhackathon/theme/theme.dart';
 import 'package:flutterhackathon/utils/app_size.dart';
 import 'package:flutterhackathon/utils/utils.dart';

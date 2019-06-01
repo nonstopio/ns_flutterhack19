@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutterhackathon/Services/firebase.dart';
+import 'package:flutterhackathon/services/firebase.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -60,6 +60,10 @@ Future<Null> updateUser() async {
     Strings.authToken: auth.currentUser.authToken,
     Strings.profileImageUrl: auth.currentUser.profileImageUrl,
   });
+
+
+
+
 }
 
 logUser() {

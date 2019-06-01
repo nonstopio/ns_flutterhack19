@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Components/app_loading_widget.dart';
+import 'package:flutterhackathon/components/app_loading_widget.dart';
 
 class AppRoutes {
   static bool loaderShowing = false;

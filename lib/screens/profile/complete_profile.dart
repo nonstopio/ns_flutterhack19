@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Services/auth.dart';
-import 'package:flutterhackathon/Services/firebase.dart';
+import 'package:flutterhackathon/services/auth.dart';
+import 'package:flutterhackathon/services/firebase.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 import 'package:flutterhackathon/components/app_alerts.dart';
 import 'package:flutterhackathon/components/app_button.dart';
