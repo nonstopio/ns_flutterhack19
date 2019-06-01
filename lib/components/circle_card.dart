@@ -23,9 +23,16 @@ class _CircleCardState extends State<CircleCard> {
               new Positioned(
                 child: new Container(
                   decoration: new BoxDecoration(
-                    borderRadius:
-                        new BorderRadius.all(new Radius.circular(10.0)),
+                    borderRadius: new BorderRadius.all(
+                      new Radius.circular(10.0),
+                    ),
                     color: Theme.of(context).accentColor,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 20.0,
+                        color: Colors.black38,
+                      )
+                    ],
                   ),
                   constraints: new BoxConstraints(
                     minHeight: circleCardHeight,

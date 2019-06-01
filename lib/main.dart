@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'NonstopIO',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Rubik',
       ),
       // home: SplashScreen(),
       home: MyCirclesScreen(),

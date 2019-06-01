@@ -158,24 +158,51 @@ flutter:
     - assets/temp-group-photos.jpg
 
 
+  # fonts:
+  #   - family: PollyRounded-Bold
+  #     fonts:
+  #       - asset: fonts/PollyRounded-Bold.ttf
+
+  #   - family: PollyRounded-Light
+  #     fonts:
+  #       - asset: fonts/PollyRounded-Light.ttf
+
+  #   - family: PollyRounded-Thin
+  #     fonts:
+  #       - asset: fonts/PollyRounded-Thin.ttf
+
+  #   - family: PollyRounded-Regular
+  #     fonts:
+  #       - asset: fonts/PollyRounded-Regular.ttf
+
+  #   - family: Loader-font
+  #     fonts:
+  #       - asset: fonts/loader-font.ttf
+
   fonts:
-    - family: PollyRounded-Bold
+    - family: Rubik
       fonts:
-        - asset: fonts/PollyRounded-Bold.ttf
-
-    - family: PollyRounded-Light
-      fonts:
-        - asset: fonts/PollyRounded-Light.ttf
-
-    - family: PollyRounded-Thin
-      fonts:
-        - asset: fonts/PollyRounded-Thin.ttf
-
-    - family: PollyRounded-Regular
-      fonts:
-        - asset: fonts/PollyRounded-Regular.ttf
-
-    - family: Loader-font
-      fonts:
-        - asset: fonts/loader-font.ttf
-
+        - asset: fonts/Rubik-Black.ttf
+          weight: 900
+        - asset: fonts/Rubik-BlackItalic.ttf
+          weight: 900
+          style: italic
+        - asset: fonts/Rubik-Bold.ttf
+          weight: 700
+        - asset: fonts/Rubik-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: fonts/Rubik-Italic.ttf
+          style: italic
+        - asset: fonts/Rubik-Light.ttf
+          weight: 300
+        - asset: fonts/Rubik-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: fonts/Rubik-Medium.ttf
+          weight: 500
+        - asset: fonts/Rubik-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: fonts/Rubik-Regular.ttf
+          weight: 400
