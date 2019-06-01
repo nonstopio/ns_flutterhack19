@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/expense/add_expense_screen.dart';
-import 'package:flutterhackathon/screens/circle/my_circles_screen.dart';
-import 'package:flutterhackathon/screens/feed/view_feeds_screen.dart';
-import 'package:flutterhackathon/services/services.dart';
 import 'package:flutterhackathon/screens/splash_screen.dart';
+import 'package:flutterhackathon/services/services.dart';
 
 import 'utils/app_strings.dart';
 

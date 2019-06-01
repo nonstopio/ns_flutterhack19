@@ -55,13 +55,13 @@ class _MyCirclesScreenState extends State<MyCirclesScreen> {
     return GridView.count(
       crossAxisCount: 2,
       children: <Widget>[
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
-        CircleCard(),
+        // CircleCard(),
+        // CircleCard(),
+        // CircleCard(),
+        // CircleCard(),
+        // CircleCard(),
+        // CircleCard(),
+        // CircleCard(),
       ],
     );
   }

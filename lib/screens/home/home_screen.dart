@@ -1,11 +1,18 @@
 import 'dart:async';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterhackathon/components/app_error_widget.dart';
 import 'package:flutterhackathon/components/app_loading_widget.dart';
 import 'package:flutterhackathon/expense/add_expense_screen.dart';
 import 'package:flutterhackathon/screens/circle/my_circles_screen.dart';
+import 'package:flutterhackathon/components/app_recactive_widget.dart';
+import 'package:flutterhackathon/components/circle_card.dart';
+import 'package:flutterhackathon/expense/add_expense_screen.dart';
+import 'package:flutterhackathon/models/models.dart';
+import 'package:flutterhackathon/services/firebase.dart';
+import 'package:flutterhackathon/services/services.dart';
 import 'package:flutterhackathon/utils/utils.dart';
-import 'package:flutterhackathon/components/app_error_widget.dart';
 
 import 'dart:ui' as ui;
 
@@ -14,20 +21,20 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with TickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   GlobalKey<ScaffoldState> _scaffoldKey =
       new GlobalObjectKey<ScaffoldState>('HomeScreen');
 
   PageState _pageState = PageState.Loaded;
   String message = "";
 
+  String _selectedCircleId = "";
+
   @override
   void initState() {
     super.initState();
     appLogs("HomeScreen", tag: "Screen");
-    Future.delayed(
-        Duration(milliseconds: 100), () => getHomeScreenDetails());
+    Future.delayed(Duration(milliseconds: 100), () => getHomeScreenDetails());
 
     new Timer(new Duration(milliseconds: 100), () {
       screenSize = MediaQuery.of(context).size;
@@ -71,6 +78,18 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   getHomeScreenDetails() async {
+    DataSnapshot dataSnapshot =
+        await userCircleRef.child(auth.currentUser.uid).once();
+    if (dataSnapshot.value != null) {
+      appLogs(dataSnapshot.value);
+
+      Map data = dataSnapshot.value;
+
+      _selectedCircleId = data.keys.first;
+
+      setState(() {});
+    }
+
     hideLoading();
   }
 
@@ -100,6 +119,77 @@ class _HomeScreenState extends State<HomeScreen>
           ],
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //     child: Icon(Icons.add),
+      //     onPressed: () async {
+      //       AppRoutes.push(
+      //           context,
+      //           AddExpenseScreen(
+      //             circleId: _selectedCircleId,
+      //           ));
+      //     }),
+    );
+  }
+
+  Widget _getCircleWidget() {
+    return Container(
+      height: Sizes.screenWidthHalf,
+      child: ReactiveWidget<Map>(
+        reactiveRef: getMyCircles(),
+        widgetBuilder: (Map data) {
+          if (data != null) {
+            List<CircleModel> _circleList = [];
+
+            data.forEach((k, v) {
+              _circleList.add(CircleModel.fromMap(data: v, id: k));
+            });
+
+            return ListView(
+              scrollDirection: Axis.horizontal,
+              children: _circleList.map((circleData) {
+                return CircleCard(
+                  circle: circleData,
+                  onTap: () async {
+                    setState(() {
+                      _selectedCircleId = circleData.id;
+                    });
+                  },
+                );
+              }).toList(),
+            );
+          }
+
+          return Container();
+        },
+        fallbackValue: Map(),
+      ),
+    );
+  }
+
+  Widget _getExpenseWidget() {
+    return Flexible(
+      child: ReactiveWidget<Map>(
+        reactiveRef: getMyCirclesFeed(_selectedCircleId),
+        widgetBuilder: (Map data) {
+          if (data != null) {
+            List<Expense> _expenseList = [];
+
+            data.forEach((k, v) {
+              _expenseList.add(Expense.fromMap(data: v, id: k));
+            });
+
+            return ListView(
+              children: _expenseList.map((expense) {
+                return ExpenseWidget(
+                    expense: expense, circleId: _selectedCircleId);
+              }).toList(),
+            );
+          }
+
+          return Container();
+        },
+        fallbackValue: Map(),
+      ),
     );
   }
 
@@ -110,11 +200,11 @@ class _HomeScreenState extends State<HomeScreen>
         isMenuOpen
             ? new BackdropFilter(
                 filter: new ui.ImageFilter.blur(
-                  sigmaX: flyAnimCurve.isCompleted? 5.0: 0.0,
+                  sigmaX: flyAnimCurve.isCompleted ? 5.0 : 0.0,
                   // new Tween(begin: 0.0, end: 5.0)
                   //     .animate(flyAnimCurve)
                   //     .value,
-                  sigmaY: flyAnimCurve.isCompleted? 5.0: 0.0,
+                  sigmaY: flyAnimCurve.isCompleted ? 5.0 : 0.0,
                   // new Tween(begin: 0.0, end: 5.0)
                   //     .animate(flyAnimCurve)
                   //     .value,
@@ -250,9 +340,10 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _body() {
-    return new ListView(
+    return new Column(
       children: <Widget>[
-        Text('YUHU')
+        _getCircleWidget(),
+        _getExpenseWidget(),
       ],
     );
   }

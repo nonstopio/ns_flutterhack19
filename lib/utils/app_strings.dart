@@ -47,15 +47,27 @@ class Strings {
 
   static const String uid = "uid";
 
+  static const String like = "like";
+  static const String dislike = "dislike";
+
   static const String accessCode = "accessCode";
 
   static const String name = "name";
+
+  static const String amount = "amount";
+
+  static const String totalFunds = "total_funds";
+
+  static const String createdBy = "created_by";
 
   static const String lastName = "lastName";
 
   static const String phone = "phone";
 
   static const String userName = "Name";
+
+  static const String description = "description";
+
 
   static const String fcmToken = "fcm_token";
 
@@ -197,7 +209,7 @@ class Strings {
   static const String cancel = "CANCEL";
   static const String view = "VIEW";
   static const String editAnswer = "EDIT ANSWER";
-  static const String image = "IMAGE";
+  static const String image = "image";
   static const String writeYourAnswer = "Write your answer...";
   static const String writeYourMessage = "Write your message...";
   static const String trainersComments = "Trainers Comments";
