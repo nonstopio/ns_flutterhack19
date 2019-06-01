@@ -7,8 +7,8 @@ class AppColors {
   static const Color greyish = const Color(0xFFb0b0b0);
   static const Color lightGrey = const Color(0xffd8d8d8);
   static const Color red = Colors.red;
-  static const Color gredientOne = const Color(0xFF60fffc);
-  static const Color gredientTwo = const Color(0xFF53a0fd);
+  static const Color gredientOne = Colors.black;
+  static const Color gredientTwo = Colors.white;
   static const Color white = const Color(0xFFffffff);
   static const Color darkGrey = const Color(0xFF484751);
   static const Color lightBlack = const Color(0xff272727);

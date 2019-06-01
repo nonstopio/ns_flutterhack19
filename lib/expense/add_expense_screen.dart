@@ -145,7 +145,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 Strings.dislike: _expense.dislike,
               });
 
-              AppToast.showSuccess("Added");
+              AppToast.showError("Disliked");
               AppRoutes.pop(context);
 
               //TODO:send notification

@@ -68,7 +68,6 @@ class Strings {
 
   static const String description = "description";
 
-
   static const String fcmToken = "fcm_token";
 
   static const String createdAt = "created_at";
@@ -246,12 +245,12 @@ class Strings {
   static const String verifying = "VERIFYING";
   static const String reSendOtp = "RE-SEND OTP";
   static const String getStarted = "GET STARTED";
-  static const String tutorialHeading1 = "Learn at your convenience";
-  static const String tutorialHeading2 = "Practice with expert trainers";
-  static const String tutorialHeading3 = "Improve your life";
-  static const String tutorialSubHeading1 = "with audio - visual online lessons and quizzes.";
-  static const String tutorialSubHeading2 = "in assignments and workshops and get guidance";
-  static const String tutorialSubHeading3 = "by Improving your English communication skills.";
+  static const String tutorialHeading1 = "An Accountable Approach To Group Expenses";
+  static const String tutorialHeading2 = "Group funds and expenses tracking becomes transparent, and trackable";
+  static const String tutorialHeading3 = "Dashboarding of relevant data-points";
+  static const String tutorialSubHeading1 = " ";
+  static const String tutorialSubHeading2 = " ";
+  static const String tutorialSubHeading3 = " ";
   static const String uploadProfilePic = "Upload profile pic";
   static const String completeYourBasicProfile = "Complete your basic profile…";
   static const String editProfile = "Edit Profile";

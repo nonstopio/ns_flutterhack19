@@ -3,10 +3,10 @@ import 'package:flutterhackathon/theme/theme.dart';
 import 'package:flutterhackathon/utils/utils.dart';
 
 class FontFamily {
-  static const String regular = "PollyRounded-Regular";
-  static const String bold = "PollyRounded-Bold";
-  static const String light = "PollyRounded-Light";
-  static const String thin = "PollyRounded-Thin";
+  static const String regular = "Rubik";
+  static const String bold = "Rubik";
+  static const String light = "Rubik";
+  static const String thin = "Rubik";
 }
 
 class TextStyles {
