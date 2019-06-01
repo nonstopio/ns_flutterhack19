@@ -148,7 +148,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 Strings.dislike: _expense.dislike,
               });
 
-              AppToast.showError("Disliked");
+              AppToast.showError("Added");
               AppRoutes.pop(context);
 
               //TODO:send notification
@@ -295,7 +295,7 @@ class ExpenseWidget extends StatelessWidget {
                       .child(circleId)
                       .child(expense.id)
                       .update({Strings.dislike: "$total"});
-                  AppToast.showSuccess("Liked");
+                  AppToast.showError("DisLiked");
                 },
               ),
               // P10(),
