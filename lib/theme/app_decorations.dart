@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Theme/theme.dart';
+import 'package:flutterhackathon/theme/theme.dart';
 
 class AppDecorations {
   static InputDecoration input({String label, String error, String hintText}) {

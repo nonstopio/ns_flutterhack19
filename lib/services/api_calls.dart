@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Services/services.dart';
 import 'package:flutterhackathon/Utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
@@ -42,7 +41,6 @@ Future<Map<String, dynamic>> getDataFromPOSTAPI({
         .post(Uri.encodeFull(url),
             headers: {
               "Accept": "application/json",
-              "Authorisation": auth.currentUser.jwtToken,
             },
             body: requestData)
         .catchError((onError) {
@@ -98,22 +96,6 @@ Future<Map<String, dynamic>> getDataFromPOSTAPI({
 
   int statusCode = responseData['statusCode'];
 
-  if (statusCode != 200 && statusCode != 203 && statusCode != 205 && statusCode != 207) {
-    /* --------AppAnalytics-----------   */
-    try {
-      Map<String, dynamic> apiData = Map();
-      apiData.putIfAbsent("apiName", () => apiName);
-      apiData.putIfAbsent("url", () => url);
-      apiData.putIfAbsent("statusCode", () => statusCode);
-      apiData.putIfAbsent("message", () => responseData['message']);
-      analytics.log(eventName: EventName.api, category: Category.fail, parameters: apiData);
-    } catch (e) {
-      if (logEnabled) apiLogs("getDataFromPOSTAPI : analytics error");
-    }
-    /* --------AppAnalytics-----------   */
-
-  }
-
   return responseData;
 }
 
@@ -155,7 +137,6 @@ Future<Map<String, dynamic>> uploadFilePOSTAPI(
             options: Options(
               headers: {
                 "Accept": "application/json",
-                "Authorisation": auth.currentUser.jwtToken,
               },
             ))
         .catchError((onError) {
@@ -212,21 +193,6 @@ Future<Map<String, dynamic>> uploadFilePOSTAPI(
 
   int statusCode = responseData['statusCode'];
 
-  if (statusCode != 200 && statusCode != 203 && statusCode != 205 && statusCode != 207) {
-    try {
-      /* --------AppAnalytics-----------   */
-      Map<String, dynamic> apiData = Map();
-      apiData.putIfAbsent("apiName", () => apiName);
-      apiData.putIfAbsent("url", () => url);
-      apiData.putIfAbsent("statusCode", () => statusCode);
-      apiData.putIfAbsent("message", () => responseData['message']);
-      analytics.log(eventName: EventName.api, category: Category.fail, parameters: apiData);
-      /* --------AppAnalytics-----------   */
-    } catch (e) {
-      if (logEnabled) apiLogs("uploadFilePOSTAPI : analytics error");
-    }
-  }
-
   return responseData;
 }
 
@@ -252,7 +218,6 @@ Future<Map<String, dynamic>> getDataFromGETAPI({
       Uri.encodeFull(url),
       headers: {
         "Accept": "application/json",
-        "Authorisation": auth.currentUser.jwtToken,
       },
     ).catchError((onError) {
       if (logEnabled) apiLogs("getDataFromGETAPI : $apiName has Error");
@@ -306,22 +271,6 @@ Future<Map<String, dynamic>> getDataFromGETAPI({
   if (logEnabled) apiLogs("getDataFromGETAPI : $apiName has Response: " + responseData.toString());
 
   int statusCode = responseData['statusCode'];
-
-  if (statusCode != 200 && statusCode != 203 && statusCode != 205 && statusCode != 207) {
-    try {
-      /* --------AppAnalytics-----------   */
-      Map<String, dynamic> apiData = Map();
-      apiData.putIfAbsent("apiName", () => apiName);
-      apiData.putIfAbsent("url", () => url);
-      apiData.putIfAbsent("statusCode", () => statusCode);
-      apiData.putIfAbsent("message", () => responseData['message']);
-      analytics.log(eventName: EventName.api, category: Category.fail, parameters: apiData);
-      /* --------AppAnalytics-----------   */
-
-    } catch (e) {
-      if (logEnabled) apiLogs("getDataFromGETAPI : analytics error");
-    }
-  }
 
   return responseData;
 }

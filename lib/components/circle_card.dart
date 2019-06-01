@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Theme/app_assets.dart';
+import 'package:flutterhackathon/theme/app_assets.dart';
 // import 'package:kingdom/dialogs/kingdom_options.dart';
 
 class CircleCard extends StatefulWidget {

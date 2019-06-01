@@ -8,6 +8,7 @@ double screenHeight = defaultScreenHeight;
 
 class Sizes {
   /*Padding & Margin Constants*/
+  static double s1 = 1.0;
 
   static double s2 = 2.0;
   static double s3 = 3.0;
@@ -16,16 +17,30 @@ class Sizes {
   static double s8 = 8.0;
   static double s10 = 10.0;
   static double s12 = 12.0;
+  static double s14 = 14.0;
+
   static double s15 = 15.0;
   static double s20 = 20.0;
+  static double s22 = 22.0;
+  static double s24 = 24.0;
   static double s25 = 25.0;
   static double s30 = 30.0;
+  static double s35 = 35.0;
+
   static double s40 = 40.0;
+  static double s45 = 45.0;
+
   static double s50 = 50.0;
   static double s60 = 60.0;
   static double s80 = 80.0;
   static double s100 = 100.0;
+  static double s120 = 120.0;
+
   static double s150 = 150.0;
+  static double s175 = 175.0;
+
+  static double s200 = 200.0;
+  static double s400 = 400.0;
 
   /*Screen Size dependent Constants*/
   static double screenWidthHalf = screenWidth / 2;
@@ -47,23 +62,25 @@ class Sizes {
   /*Default Height&Width*/
   static double defaultIndicatorHeight = 5.0;
   static double alertHeight = 200.0;
-  static double appBarHeight = 235.0;
+  static double appBarHeight = 220.0;
   static double minWidthAlertButton = 70.0;
   static double defaultIndicatorWidth = screenWidthFourth;
 
   /*EdgeInsets*/
-  static EdgeInsets spacingAllDefault = EdgeInsets.all(s8);
-  static EdgeInsets spacingAllSmall = EdgeInsets.all(s10);
+  static EdgeInsets p8 = EdgeInsets.all(s8);
+  static EdgeInsets p10 = EdgeInsets.all(s10);
 
   static void setScreenAwareConstant(context) {
-    screenWidth = MediaQuery.of(context).size.width;
-    screenHeight = MediaQuery.of(context).size.height;
-
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
     )..init(context);
+
+    Size size = MediaQuery.of(context).size;
+
+    screenWidth = size.width;
+    screenHeight = size.height;
 
     FontSize.setScreenAwareFontSize();
 
@@ -86,19 +103,21 @@ class Sizes {
     s80 = ScreenUtil.instance.setWidth(80.0);
     s100 = ScreenUtil.instance.setWidth(100.0);
     s150 = ScreenUtil.instance.setWidth(150.0);
+    s200 = ScreenUtil.instance.setWidth(200.0);
+    s400 = ScreenUtil.instance.setWidth(400.0);
 
     /*EdgeInsets*/
 
-    spacingAllDefault = EdgeInsets.all(s8);
-    spacingAllSmall = EdgeInsets.all(s10);
+    p8 = EdgeInsets.all(s8);
+    p10 = EdgeInsets.all(s10);
 
     /*Screen Size dependent Constants*/
-    screenWidthHalf = ScreenUtil.instance.width / 2;
-    screenWidthThird = ScreenUtil.instance.width / 3;
-    screenWidthFourth = ScreenUtil.instance.width / 4;
-    screenWidthFifth = ScreenUtil.instance.width / 5;
-    screenWidthSixth = ScreenUtil.instance.width / 6;
-    screenWidthTenth = ScreenUtil.instance.width / 10;
+    screenWidthHalf = screenWidth / 2;
+    screenWidthThird = screenWidth / 3;
+    screenWidthFourth = screenWidth / 4;
+    screenWidthFifth = screenWidth / 5;
+    screenWidthSixth = screenWidth / 6;
+    screenWidthTenth = screenWidth / 10;
 
     /*Image Dimensions*/
 
@@ -108,7 +127,7 @@ class Sizes {
     defaultImageRadius = ScreenUtil.instance.setWidth(40.0);
     snackBarHeight = ScreenUtil.instance.setWidth(50.0);
     texIconSize = ScreenUtil.instance.setWidth(30.0);
-    appBarHeight = ScreenUtil.instance.setWidth(235.0);
+    appBarHeight = ScreenUtil.instance.setWidth(220.0);
 
     /*Default Height&Width*/
     defaultIndicatorHeight = ScreenUtil.instance.setHeight(5.0);

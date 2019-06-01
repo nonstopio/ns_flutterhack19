@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhackathon/Theme/theme.dart';
+import 'package:flutterhackathon/theme/theme.dart';
 import 'package:flutterhackathon/Utils/utils.dart';
 
 class DashedLineWidget extends StatelessWidget {
@@ -126,6 +126,75 @@ class DevWidget extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class P1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(Sizes.s1));
+  }
+}
+
+class P2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(Sizes.s2));
+  }
+}
+
+class P10 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(Sizes.s10));
+  }
+}
+
+class PH10 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.symmetric(horizontal: Sizes.s10));
+  }
+}
+
+class P5 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(Sizes.s5));
+  }
+}
+
+class P20 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(Sizes.s20));
+  }
+}
+
+class P30 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(Sizes.s30));
+  }
+}
+
+class C1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Sizes.s1,
+      width: Sizes.s1,
+    );
+  }
+}
+
+class C2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Sizes.s2,
+      width: Sizes.s2,
     );
   }
 }

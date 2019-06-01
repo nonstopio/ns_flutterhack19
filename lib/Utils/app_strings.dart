@@ -1,8 +1,37 @@
 class App {
-  static const int versionCode = 5;
-  static const String versionName = '1.0.9';
-  static const String appName = 'WordsMaya';
+  static const int versionCode = 1;
+  static const String versionName = '1.0.0';
+  static const String appName = 'We Spent';
   static bool devMode = true; //TODO:make it false for release
+}
+
+class Labels {
+  static const String email = "Email";
+  static const String password = "Password";
+  static const String age = "Age";
+  static const String mobileNumber = "Mobile Number";
+  static const String login = "LOGIN";
+  static const String logout = "LOGOUT";
+  static const String forgotPassword = "Forgot Password? Click Here";
+
+  static const String referAndEarnCode = "Refer Code";
+
+  static const String state = "State";
+  static const String aadhar = "Aadhar";
+  static const String name = "Name";
+  static const String bankName = "Bank Name";
+  static const String pinCode = "Pin Code";
+  static const String ifscCode = "IFSC Code";
+  static const String address1 = "Address1";
+  static const String upiId = "UPI ID";
+  static const String city = "City";
+  static const String accountName = "Account Name";
+  static const String pan = "PAN";
+  static const String gstin = "GSTIN";
+  static const String phone = "Phone";
+  static const String accountNumber = "Account Number";
+  static const String address2 = "Address2";
+  static const String bankBranch = "Bank Branch";
 }
 
 class Strings {
@@ -20,7 +49,7 @@ class Strings {
 
   static const String accessCode = "accessCode";
 
-  static const String firstName = "firstName";
+  static const String name = "name";
 
   static const String lastName = "lastName";
 
@@ -80,6 +109,7 @@ class Strings {
   static const String letStart = "Let's Start";
 
   static const String timeOutMessage = "Timeout !\n Please check if you have good internet connection!\n Try Again";
+  static const String noInternetMessage = "Please check if you have good internet connection!\n Try Again";
 
   static const String errorMessage =
       "Something Went Wrong !\n Please check if you have good internet connection!\n Try Again";
