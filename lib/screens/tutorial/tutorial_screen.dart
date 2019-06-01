@@ -6,7 +6,6 @@ import 'package:flutterhackathon/Utils/app_size.dart';
 import 'package:flutterhackathon/Utils/utils.dart';
 import 'package:flutterhackathon/components/backgroud_gredient_widget.dart';
 
-
 class TutorialScreen extends StatefulWidget {
   @override
   _TutorialScreenState createState() => _TutorialScreenState();
@@ -79,7 +78,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   onTap: () async {
                     AppRoutes.makeFirst(context, LoginScreen());
                   },
-                  text: Strings.getStarted,
+                  title: Strings.getStarted,
                 ),
               ),
               Padding(
@@ -181,4 +180,3 @@ class TutorialPage {
 
   TutorialPage({this.image, this.heading, this.subHeading});
 }
-

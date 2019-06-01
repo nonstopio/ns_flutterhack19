@@ -5,6 +5,35 @@ class App {
   static bool devMode = true; //TODO:make it false for release
 }
 
+class Labels {
+  static const String email = "Email";
+  static const String password = "Password";
+  static const String age = "Age";
+  static const String mobileNumber = "Mobile Number";
+  static const String login = "LOGIN";
+  static const String logout = "LOGOUT";
+  static const String forgotPassword = "Forgot Password? Click Here";
+
+  static const String referAndEarnCode = "Refer Code";
+
+  static const String state = "State";
+  static const String aadhar = "Aadhar";
+  static const String name = "Name";
+  static const String bankName = "Bank Name";
+  static const String pinCode = "Pin Code";
+  static const String ifscCode = "IFSC Code";
+  static const String address1 = "Address1";
+  static const String upiId = "UPI ID";
+  static const String city = "City";
+  static const String accountName = "Account Name";
+  static const String pan = "PAN";
+  static const String gstin = "GSTIN";
+  static const String phone = "Phone";
+  static const String accountNumber = "Account Number";
+  static const String address2 = "Address2";
+  static const String bankBranch = "Bank Branch";
+}
+
 class Strings {
   static const timeOutInSeconds = 61;
 

@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutterhackathon/Services/firebase.dart';
 import 'package:flutterhackathon/Utils/utils.dart';
 import 'package:flutterhackathon/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'services.dart';
 
 final auth = new Auth();
 Future<SharedPreferences> sharedPreferencesObject = SharedPreferences.getInstance();
@@ -20,7 +19,7 @@ Future<Null> setUserFromSharedPreference() async {
   appLogs("setUserFromPreference");
 
   User user = new User(
-    uid: "J6sa19UE0JSPf7qZABuq3jdfmdX2",
+    uid: sharedPreferences.getString(Strings.uid) ?? "",
     loggedIn: sharedPreferences.getBool(Strings.loggedIn) ?? false,
     name: sharedPreferences.getString(Strings.name) ?? "",
     email: sharedPreferences.getString(Strings.email) ?? "",
@@ -50,6 +49,21 @@ Future<Null> updateUserInSharedPreference() async {
   sharedPreferences.setString(Strings.profileImageUrl, auth.currentUser.profileImageUrl);
 
   logUser();
+}
+
+Future<Null> updateUser() async {
+  await userRef.child(auth.currentUser.uid).update({
+    Strings.name: auth.currentUser.name,
+    Strings.phone: auth.currentUser.phone,
+    Strings.email: auth.currentUser.email,
+    Strings.fcmToken: auth.currentUser.fcmToken,
+    Strings.authToken: auth.currentUser.authToken,
+    Strings.profileImageUrl: auth.currentUser.profileImageUrl,
+  });
+
+
+
+
 }
 
 logUser() {

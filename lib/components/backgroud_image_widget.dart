@@ -35,3 +35,29 @@ class BackgroundImageWidget extends StatelessWidget {
     );
   }
 }
+
+class BackgroundWidget extends StatelessWidget {
+  final String image;
+  final Widget child;
+
+  const BackgroundWidget({
+    Key key,
+    this.image = Assets.bgScreen,
+    this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: screenHeight,
+      width: screenWidth,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(image),
+          fit: BoxFit.fitWidth,
+        ),
+      ),
+      child: child,
+    );
+  }
+}
